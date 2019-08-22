@@ -59,13 +59,13 @@
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.55"
     >
 
-
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_button"
-                style="@style/MaterialButton"
                 android:text="@string/log_in"
                 android:onClick="onClick"
-        />
+                android:layout_width="match_parent" android:layout_height="match_parent" style="@style/MaterialButton"/>
+
+
         <androidx.core.widget.ContentLoadingProgressBar
                 style="?android:attr/progressBarStyle"
                 android:indeterminateTint="@color/colorSecondary"
@@ -73,6 +73,7 @@
                 android:layout_height="40dp"
                 android:id="@+id/login_progressbar"
                 android:layout_gravity="center"
+                android:translationZ="20dp"
                 android:visibility="invisible"/>
 
 
