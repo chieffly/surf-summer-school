@@ -66,8 +66,9 @@ class LoginActivity : AppCompatActivity() {
 
     fun onClick(view: View ) {
         textLayoutPhone.error = ""
-        textLayoutPass.helperText = ""
         textLayoutPass.error = ""
+        textLayoutPass.helperText = ""
+
 
 
         if (!hasEmptyFields()) {
