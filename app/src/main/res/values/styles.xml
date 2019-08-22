@@ -11,5 +11,27 @@
     <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
         <item name="android:windowBackground">@drawable/bg_splash</item>
     </style>
+    <style name="text_field_blue">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:layout_marginLeft">16dp</item>
+        <item name="android:layout_marginRight">16dp</item>
+        <item name="android:textColorHint">#54FFFFFF</item>
+        <item name="boxBackgroundColor">@color/colorSecondary</item>
+        <item name="hintTextColor">@color/colorAction</item>
+        <item name="helperTextTextColor">@color/colorWhite</item>
+        <item name="boxStrokeColor">@color/box_stroke</item>
+    </style>
 
+    <style name="MaterialButton" >
+        <item name="android:textColor">@color/colorBackground</item>
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="iconPadding">4dp</item>
+        <item name="backgroundTint">@color/colorAction</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:text">"@string/log_in</item>
+        <item name="rippleColor">@color/button_tint</item>
+    </style>
 </resources>

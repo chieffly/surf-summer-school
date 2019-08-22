@@ -3,4 +3,7 @@
     <string name="log_in">Войти</string>
     <string name="password">Пароль</string>
     <string name="phone">Логин</string>
+    <string name="pass_length">Пароль должен содержать %s символов</string>
+    <string name="err_empty">Поле не может быть пустым</string>
+    <string name="err_wrong_data">Вы ввели не верные данные. Попробуйте еще раз</string>
 </resources>
