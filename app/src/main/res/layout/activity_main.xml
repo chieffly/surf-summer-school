@@ -20,7 +20,7 @@ android:background="@color/colorBackground">
 
         <fragment
                 android:layout_width="match_parent"
-                android:layout_height="match_parent" android:name="ru.chieffly.memoscope.FragmentOne"
+                android:layout_height="match_parent" android:name="ru.chieffly.memoscope.FragmentDash"
                 android:id="@+id/fragment"/>
 
     </FrameLayout>

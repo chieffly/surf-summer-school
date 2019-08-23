@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 
-class FragmentOne : Fragment() {
+class FragmentDash : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment1, null)
+        return inflater.inflate(R.layout.fragment_dash, null)
     }
 }
