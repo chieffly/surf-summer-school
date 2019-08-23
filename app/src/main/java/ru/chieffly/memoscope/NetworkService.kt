@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.http.Body
-import retrofit2.http.POST
+import retrofit2.http.*
 
 
 interface NetworkService {
 
     @POST("/auth/login")
     fun registrationPost (@Body body : LoginUserRequestDto ) : Call<AuthInfoDto>
-
+    @GET("/memes")
+    fun getMemes () : Call<List<MemDto>>
     companion object {
 
         fun create(): NetworkService {
@@ -25,7 +25,6 @@ interface NetworkService {
             return retrofit.create(NetworkService::class.java)
         }
     }
-
 }
 
 data class LoginUserRequestDto (
@@ -46,11 +45,11 @@ data class AuthInfoDto (
     @SerializedName("userInfo") val userInfo : UserInfo
 )
 data class MemDto (
-    @SerializedName("id") val id : Int,
+    @SerializedName("id") val id : Long,
     @SerializedName("title") val title : String,
     @SerializedName("description") val description : String,
-    @SerializedName("isFavorite") val isFavorite : String,
-    @SerializedName("createdDate") val createdDate : String,
+    @SerializedName("isFavorite") val isFavorite : Boolean,
+    @SerializedName("createdDate") val createdDate : Long,
     @SerializedName("photoUtl") val photoUtl : String
 )
 

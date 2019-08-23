@@ -1,23 +1,21 @@
 package ru.chieffly.memoscope
 
 import android.os.Bundle
-import androidx.appcompat.app.AppCompatActivity
 import android.view.MenuItem
+import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
-
-class MainActivity : AppCompatActivity(),  BottomNavigationView.OnNavigationItemSelectedListener {
+class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //loading the default fragment
-        loadFragment(FragmentDash())
 
-        //getting bottom navigation view and attaching the listener
+
+        loadFragment(FragmentDash())
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.setOnNavigationItemSelectedListener(this)
     }
@@ -39,7 +37,7 @@ class MainActivity : AppCompatActivity(),  BottomNavigationView.OnNavigationItem
     }
 
     private fun loadFragment(fragment: Fragment?): Boolean {
-        //switching fragment
+
         if (fragment != null) {
             supportFragmentManager
                 .beginTransaction()

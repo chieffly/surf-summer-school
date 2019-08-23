@@ -31,7 +31,8 @@
         <ImageButton
                 android:layout_width="40dp"
                 android:layout_height="40dp" app:srcCompat="@drawable/ic_favorite_border"
-                android:id="@+id/imageButton" android:background="@color/button_tint"/>
+                android:id="@+id/imageButton"
+                android:background="@drawable/button_fav_states"/>
         <ImageButton
                 android:layout_width="40dp"
                 android:layout_height="40dp" app:srcCompat="@drawable/ic_share" android:id="@+id/imageButton2"

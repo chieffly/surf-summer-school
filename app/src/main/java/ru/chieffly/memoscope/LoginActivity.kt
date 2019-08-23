@@ -7,6 +7,8 @@ import android.text.TextWatcher
 import android.view.View
 import android.widget.ProgressBar
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -66,24 +68,35 @@ class LoginActivity : AppCompatActivity() {
             val acc = LoginUserRequestDto(login_edit_text_phone.text.toString(), login_edit_text_pass.text.toString())
             client.registrationPost(acc).enqueue(object : Callback<AuthInfoDto> {
                 override fun onFailure(call: Call<AuthInfoDto>?, t: Throwable?) {
-                    //TODO всплывающее сообщение
+                    val snackbar =
+                        Snackbar.make(log_layout, getString(R.string.err_error), Snackbar.LENGTH_LONG)
+                    snackbar.view.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorError))
+                    snackbar.show()
                     login_button.text = getString(R.string.log_in)
                     login_progressbar.visibility = ProgressBar.INVISIBLE
                 }
 
                 override fun onResponse(call: Call<AuthInfoDto>?, response: Response<AuthInfoDto>?) {
-                    //TODO проверка на успешность запроса
-                    login_button.text = getString(R.string.log_in)
-                    login_progressbar.visibility = ProgressBar.INVISIBLE
+                    if (response?.isSuccessful()!!) {
 
-                    val prefs = Prefs(getApplicationContext())
-                    val userInfo =  response?.body()?.userInfo
-                    prefs.saveUser(userInfo!!)
-                    response?.body()?.accessToken?.let { prefs.addString("Token", it) }
+                        login_button.text = getString(R.string.log_in)
+                        login_progressbar.visibility = ProgressBar.INVISIBLE
 
-                    val intent = Intent(applicationContext, MainActivity::class.java)
-                    startActivity(intent)
-                    finish()
+                        val prefs = Prefs(getApplicationContext())
+                        val userInfo = response?.body()?.userInfo
+                        prefs.saveUser(userInfo!!)
+                        response?.body()?.accessToken?.let { prefs.addString("Token", it) }
+
+                        val intent = Intent(applicationContext, MainActivity::class.java)
+                        startActivity(intent)
+                        finish()
+                    } else {
+
+                        val snackbar =
+                            Snackbar.make(log_layout, getString(R.string.err_wrong_data), Snackbar.LENGTH_LONG)
+                        snackbar.view.setBackgroundColor(ContextCompat.getColor(applicationContext, R.color.colorError))
+                        snackbar.show()
+                    }
                 }
             })
         }

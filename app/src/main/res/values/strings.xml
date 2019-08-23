@@ -5,5 +5,14 @@
     <string name="phone">Логин</string>
     <string name="pass_length">Пароль должен содержать %s символов</string>
     <string name="err_empty">Поле не может быть пустым</string>
-    <string name="err_wrong_data">Вы ввели не верные данные. Попробуйте еще раз</string>
+    <string name="err_wrong_data">Вы ввели не верные данные.\nПопробуйте еще раз</string>
+    <string name="err_error">Что-то пошло не так.\nПроверьте подключение или попробуйте позже</string>
+    <string name="err_dash">Не удалось загрузить ленту\nОбновите экран или попробуйте позже.</string>
+    <string name="err_internet">Отсутствует интернет-соединение\nПопробуйте позже.</string>
+    <string name="add_title">Заголовок</string>
+    <string name="add_description">Текст</string>
+    <string name="add_create">Создать</string>
+    <string name="msg_exit">Действительно хотите выйти?</string>
+    <string name="cancel">Отмена</string>
+    <string name="exit">Выйти</string>
 </resources>
