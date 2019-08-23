@@ -7,21 +7,38 @@ import android.view.ViewGroup
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.fragment.app.Fragment
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
 
 class FragmentDash : Fragment() {
+
+    lateinit var progressBar : ProgressBar
+    lateinit var textFragment : TextView
     val client by lazy {
         NetworkService.create()
     }
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_dash, container, false)
-        val textFragment = view?.findViewById(R.id.textViewR) as TextView
-        val progressBar = view?.findViewById(R.id.DashProgressBar) as ProgressBar
+        textFragment = view?.findViewById(R.id.textViewR) as TextView
+        progressBar = view?.findViewById(R.id.DashProgressBar) as ProgressBar
         textFragment.visibility= TextView.INVISIBLE
 
+        refreshAction()
+
+        val mSwipeRefreshLayout = view?.findViewById(R.id.swipeLayout) as SwipeRefreshLayout
+        mSwipeRefreshLayout.setOnRefreshListener {
+            refreshAction()
+            mSwipeRefreshLayout.isRefreshing = false
+        }
+
+        return view;
+
+    }
+
+    fun refreshAction() {
         val prefs = Prefs(getActivity()!!.getApplicationContext())
         val token = prefs.getString("Token")
         println (token)
@@ -33,7 +50,7 @@ class FragmentDash : Fragment() {
             }
             override fun onResponse(call: Call<List<MemDto>>?, response: Response<List<MemDto>>?) {
                 if (response?.isSuccessful()!!) {
-
+                    print("Success")
                     val list = response.body() //список мемов
                     progressBar.visibility= TextView.INVISIBLE
 
@@ -44,7 +61,6 @@ class FragmentDash : Fragment() {
                 }
             }
         })
-        return view;
-
     }
+
 }
