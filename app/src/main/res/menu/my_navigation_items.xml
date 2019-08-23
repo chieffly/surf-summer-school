@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_search"
+          android:title="Дашборд"
+          android:icon="@drawable/ic_dashboard" />
+    <item android:id="@+id/action_settings"
+          android:title="Добавить"
+          android:icon="@drawable/ic_add_circle" />
+    <item android:id="@+id/action_navigation"
+          android:title="Пользователь"
+          android:icon="@drawable/ic_person" />
+</menu>

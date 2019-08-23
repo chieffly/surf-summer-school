@@ -1,11 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              xmlns:tools="http://schemas.android.com/tools" android:orientation="vertical"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:orientation="vertical"
               android:layout_width="match_parent"
-              android:layout_height="wrap_content">
-    <TextView
-            android:text="TextView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textView" tools:text="Hello world"/>
+              android:layout_height="wrap_content"
+android:background="@color/colorBackground">
 
+    <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:theme="?attr/actionBarTheme"
+            android:minHeight="?attr/actionBarSize" android:id="@+id/toolbar" app:title="@string/app_name"
+            app:titleTextColor="@color/colorWhite"/>
+    <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="570dp">
+
+        <fragment
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" android:name="ru.chieffly.memoscope.FragmentOne"
+                android:id="@+id/fragment"/>
+
+    </FrameLayout>
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/colorBackgroundDark"
+            app:menu="@menu/my_navigation_items"/>
 </LinearLayout>
