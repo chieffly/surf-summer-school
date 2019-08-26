@@ -49,8 +49,6 @@ class FragmentDash : Fragment() {
 
     fun makeMemRequest() {
         val storage = UserStorage(getActivity()!!.getApplicationContext())
-
-        //val prefs = Prefs(getActivity()!!.getApplicationContext())
         val token = storage.getToken()
         println (token)
         ns.getMemApi().getMemes().enqueue(object : Callback<List<MemDto>> {
@@ -61,9 +59,7 @@ class FragmentDash : Fragment() {
             }
             override fun onResponse(call: Call<List<MemDto>>?, response: Response<List<MemDto>>?) {
                 if (response?.isSuccessful()!!) {
-                    println("Success")
                     val list = response.body() as List<MemDto>//список мемов
-                    println("Success" + list?.get(3))
                     updateRecycleView(list)
                     progressBar.isVisible = false
 
@@ -77,7 +73,6 @@ class FragmentDash : Fragment() {
     }
 
     fun updateRecycleView(mems: List<MemDto>) {
-        //getting recyclerview from xml
         val recyclerView = view?.findViewById(R.id.recyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
 

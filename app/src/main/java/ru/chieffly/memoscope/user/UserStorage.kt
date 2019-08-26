@@ -24,6 +24,7 @@ class UserStorage (cntxt: Context) {
         prefs[APP_PREFERENCES_LASTNAME] = user.lastName
         prefs[APP_PREFERENCES_USERDESCR] = user.userDescription
     }
+
     fun saveToken (token: String) {
         prefs[APP_PREFERENCES_TOKEN] = token
     }
@@ -36,6 +37,11 @@ class UserStorage (cntxt: Context) {
     fun getToken() : String {
         val token: String? =  prefs[APP_PREFERENCES_TOKEN]
         return token.toString()
+    }
+
+    fun getField (key : String): String {
+        val value: String? =  prefs[key]
+        return value.toString()
     }
 }
 

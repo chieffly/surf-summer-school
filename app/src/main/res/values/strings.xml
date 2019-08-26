@@ -15,4 +15,5 @@
     <string name="msg_exit">Действительно хотите выйти?</string>
     <string name="cancel">Отмена</string>
     <string name="exit">Выйти</string>
+    <string name="mem_date">%s дней назад</string>
 </resources>
