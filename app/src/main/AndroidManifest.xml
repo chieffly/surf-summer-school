@@ -22,5 +22,6 @@
         <activity android:name=".activity.LoginActivity"
                   android:windowSoftInputMode="adjustResize|stateHidden"
         />
+        <activity android:name=".activity.MemBrowserActivity"/>
     </application>
 </manifest>

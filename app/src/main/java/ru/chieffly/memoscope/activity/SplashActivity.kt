@@ -13,7 +13,7 @@ class SplashActivity : AppCompatActivity() {
 
     var runnable: Runnable = object : Runnable {
         override fun run() {
-            openLoginScreen()
+            openMainScreen()
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -38,4 +38,9 @@ class SplashActivity : AppCompatActivity() {
         finish()
     }
 
+    fun openMainScreen() {
+        val intent = Intent(applicationContext, MainActivity::class.java)
+        startActivity(intent)
+        finish()
+    }
 }

@@ -8,6 +8,8 @@ import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.RecyclerView
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import ru.chieffly.memoscope.R
 import ru.chieffly.memoscope.net.NetworkService
@@ -16,6 +18,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import ru.chieffly.memoscope.user.UserStorage
 import ru.chieffly.memoscope.model.MemDto
+import ru.chieffly.memoscope.adapters.MemListAdapter
 
 
 class FragmentDash : Fragment() {
@@ -59,9 +62,9 @@ class FragmentDash : Fragment() {
             override fun onResponse(call: Call<List<MemDto>>?, response: Response<List<MemDto>>?) {
                 if (response?.isSuccessful()!!) {
                     println("Success")
-                    val list = response.body() //список мемов
+                    val list = response.body() as List<MemDto>//список мемов
                     println("Success" + list?.get(3))
-
+                    updateRecycleView(list)
                     progressBar.isVisible = false
 
                 } else {
@@ -73,5 +76,20 @@ class FragmentDash : Fragment() {
         })
     }
 
+    fun updateRecycleView(mems: List<MemDto>) {
+        //getting recyclerview from xml
+        val recyclerView = view?.findViewById(R.id.recyclerView) as RecyclerView
+        recyclerView.setHasFixedSize(true)
+
+        val sGridLayoutManager = StaggeredGridLayoutManager(
+            2,
+            StaggeredGridLayoutManager.VERTICAL
+        )
+        recyclerView.layoutManager = sGridLayoutManager
+
+
+        val rcAdapter = MemListAdapter( mems)
+        recyclerView.adapter = rcAdapter
+    }
 
 }
