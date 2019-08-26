@@ -53,17 +53,24 @@
     <com.google.android.material.circularreveal.CircularRevealFrameLayout
             android:layout_width="0dp"
             android:layout_height="48dp"
-            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginLeft="16dp" android:layout_marginStart="16dp"
-            android:layout_marginRight="16dp" android:layout_marginEnd="16dp"
-            android:id="@+id/circularRevealFrameLayout" android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintHorizontal_bias="0.55"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginEnd="16dp"
+            android:id="@+id/circularRevealFrameLayout"
+            android:layout_marginBottom="32dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.55"
     >
 
         <com.google.android.material.button.MaterialButton
                 android:id="@+id/login_button"
                 android:text="@string/log_in"
-                android:layout_width="match_parent" android:layout_height="match_parent" style="@style/MaterialButton"/>
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                style="@style/MaterialButton"/>
 
 
         <androidx.core.widget.ContentLoadingProgressBar
