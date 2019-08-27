@@ -19,6 +19,7 @@ import retrofit2.Response
 import ru.chieffly.memoscope.user.UserStorage
 import ru.chieffly.memoscope.model.MemDto
 import ru.chieffly.memoscope.adapters.MemListAdapter
+import ru.chieffly.memoscope.db.AppDatabase
 
 
 class FragmentDash : Fragment() {
@@ -30,14 +31,14 @@ class FragmentDash : Fragment() {
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
         val view = inflater.inflate(R.layout.fragment_dash, container, false)
-        textFragment = view?.findViewById(R.id.textViewR) as TextView
-        progressBar = view?.findViewById(R.id.DashProgressBar) as ProgressBar
+        textFragment = view.findViewById(R.id.textViewR) as TextView
+        progressBar = view.findViewById(R.id.DashProgressBar) as ProgressBar
         textFragment.visibility= TextView.INVISIBLE
 
         makeMemRequest()
 
 
-        val mSwipeRefreshLayout = view?.findViewById(R.id.swipeLayout) as SwipeRefreshLayout
+        val mSwipeRefreshLayout = view.findViewById(R.id.swipeLayout) as SwipeRefreshLayout
         mSwipeRefreshLayout.setOnRefreshListener {
             makeMemRequest()
             mSwipeRefreshLayout.isRefreshing = false
@@ -48,7 +49,7 @@ class FragmentDash : Fragment() {
     }
 
     fun makeMemRequest() {
-        val storage = UserStorage(getActivity()!!.getApplicationContext())
+        val storage = UserStorage(requireContext())
         val token = storage.getToken()
         println (token)
         ns.getMemApi().getMemes().enqueue(object : Callback<List<MemDto>> {
@@ -60,7 +61,16 @@ class FragmentDash : Fragment() {
             override fun onResponse(call: Call<List<MemDto>>?, response: Response<List<MemDto>>?) {
                 if (response?.isSuccessful()!!) {
                     val list = response.body() as List<MemDto>//список мемов
-                    updateRecycleView(list)
+
+                    // ТЕСТ загрузка базы данных и отображение информации из нее
+                    val db = AppDatabase.getDatabase(requireContext())
+                    val memDB = db.memDao()
+                    list.forEach{
+                        memDB.insert(it)
+                    }
+
+                    val listFromDB = memDB.all
+                    updateRecycleView(listFromDB)
                     progressBar.isVisible = false
 
                 } else {
