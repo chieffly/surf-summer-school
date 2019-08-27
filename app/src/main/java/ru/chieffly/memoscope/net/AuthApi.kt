@@ -10,8 +10,8 @@ import ru.chieffly.memoscope.model.MemDto
 
 interface AuthApi {
     @POST("/auth/login")
-    fun registrationPost (@Body body : LoginUserRequestDto) : Call<AuthInfoDto>
+    fun loginRequest (@Body body: LoginUserRequestDto) : Call<AuthInfoDto>
 
-    @POST("/auth/loout")
-    fun logoutPost (@Body body : LoginUserRequestDto) : Call<AuthInfoDto>
+    @POST("/auth/logout")
+    fun logoutRequest () : Call<AuthInfoDto>
 }

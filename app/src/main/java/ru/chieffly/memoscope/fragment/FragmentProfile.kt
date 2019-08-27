@@ -10,12 +10,17 @@ import ru.chieffly.memoscope.R
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import kotlinx.android.synthetic.main.fragment_person.*
+import ru.chieffly.memoscope.net.NetworkService
+import ru.chieffly.memoscope.ui.LogoutDialogFragment
+import ru.chieffly.memoscope.ui.OpenImageDialogFragment
 import ru.chieffly.memoscope.user.APP_PREFERENCES_USERDESCR
 import ru.chieffly.memoscope.user.APP_PREFERENCES_USERNAME
 import ru.chieffly.memoscope.user.UserStorage
 
 
-class FragmentPerson : Fragment() {
+
+
+class FragmentProfile : Fragment() {
 
     lateinit var txtUserName : TextView
     lateinit var txtUserDescription : TextView
@@ -55,4 +60,25 @@ class FragmentPerson : Fragment() {
             inflater.inflate(R.menu.app_menu, menu)
 
 }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        when (item.itemId) {
+            R.id.main_menu_logout -> {
+                logoutDialog()
+                return true
+            }
+            R.id.main_menu_about -> {
+                //showHelp()
+                return true
+            }
+            else -> return super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun logoutDialog() {
+        val dialog = LogoutDialogFragment()
+        dialog.setTargetFragment(this, 333)
+        dialog.show(fragmentManager!!.beginTransaction(), "dialog")
+    }
 }

@@ -5,7 +5,7 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.user.APP_PREFERENCES_USERNAME
+import ru.chieffly.memoscope.user.APP_PREFERENCES_TOKEN
 import ru.chieffly.memoscope.user.UserStorage
 
 private const val DELAY: Long = 300
@@ -16,9 +16,8 @@ class SplashActivity : AppCompatActivity() {
     var runnable: Runnable = object : Runnable {
         override fun run() {
             val storage = UserStorage(applicationContext)
-            val name : String? = storage.getField(APP_PREFERENCES_USERNAME)
-            //println()
-            if (name !="null") {
+            val token : String? = storage.getField(APP_PREFERENCES_TOKEN)
+            if (token !="null") {
                 openMainScreen()
             } else  {openLoginScreen()
             }

@@ -93,7 +93,7 @@ class LoginActivity : AppCompatActivity() {
             login_edit_text_phone.text.toString(),
             login_edit_text_pass.text.toString()
         )
-        ns.getAuthApi().registrationPost(acc).enqueue(object : Callback<AuthInfoDto> {
+        ns.getAuthApi().loginRequest(acc).enqueue(object : Callback<AuthInfoDto> {
             override fun onFailure(call: Call<AuthInfoDto>?, t: Throwable?) {
                 val snackbar =
                     Snackbar.make(log_layout, getString(R.string.err_error), Snackbar.LENGTH_LONG)

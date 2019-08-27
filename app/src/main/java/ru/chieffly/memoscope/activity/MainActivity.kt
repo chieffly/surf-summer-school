@@ -7,10 +7,8 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.chieffly.memoscope.fragment.FragmentAdd
 import ru.chieffly.memoscope.fragment.FragmentDash
-import ru.chieffly.memoscope.fragment.FragmentPerson
+import ru.chieffly.memoscope.fragment.FragmentProfile
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.user.APP_PREFERENCES_ID
-import ru.chieffly.memoscope.user.UserStorage
 
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -32,7 +30,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
             R.id.navigation_dashboard -> fragment = FragmentDash()
 
-            R.id.navigation_person -> fragment = FragmentPerson()
+            R.id.navigation_person -> fragment = FragmentProfile()
 
             R.id.navigation_add -> fragment = FragmentAdd()
         }

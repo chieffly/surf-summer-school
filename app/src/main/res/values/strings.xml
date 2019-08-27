@@ -22,4 +22,7 @@
     <string name="galery">Из галерии</string>
     <string name="chose_pic">Выбрать фото</string>
     <string name="titleProfile">Профиль</string>
+    <string name="logoutTitle">Действительно хотите выйти?</string>
+    <string name="logoutCancel">Отмена</string>
+    <string name="logoutConfirm">Выйти</string>
 </resources>
