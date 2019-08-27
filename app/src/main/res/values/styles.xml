@@ -23,7 +23,7 @@
         <item name="boxStrokeColor">@color/box_stroke</item>
     </style>
 
-    <style name="MaterialButton" >
+    <style name="MaterialButton" parent="Widget.MaterialComponents.Button" >
         <item name="android:textColor">@color/colorBackground</item>
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingRight">8dp</item>
@@ -34,14 +34,9 @@
         <item name="android:text">"@string/log_in</item>
         <item name="rippleColor">@color/button_tint</item>
     </style>
-
-    <style name="MyAlertDialogStyle" parent="Theme.MaterialComponents.Light.Dialog.Alert">
-
-        <!-- Used for the buttons -->
-        <item name="colorAccent">@color/colorAction</item>
-        <!-- Used for the title and text -->
-        <item name="android:textColorPrimary">@color/colorSecondary</item>
-        <!-- Used for the background -->
-        <item name="android:background">@color/colorError</item>
+    <style name="TextButton" parent="Widget.AppCompat.Button.Borderless">>
     </style>
+
+
+
 </resources>

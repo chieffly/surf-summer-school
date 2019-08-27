@@ -45,7 +45,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         if (fragment != null) {
             supportFragmentManager
                 .beginTransaction()
-                .replace(R.id.fragment_container, fragment!!)
+                .replace(R.id.fragment_container, fragment)
                 .commit()
             return true
         }

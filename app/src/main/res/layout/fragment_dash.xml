@@ -1,4 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+    <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            app:title="@string/app_name"
+            app:titleTextColor="@color/colorWhite"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorSecondary"
+            android:minHeight="?attr/actionBarSize"
+    />
 <androidx.swiperefreshlayout.widget.SwipeRefreshLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,6 +22,8 @@
         android:id="@+id/swipeLayout"
         android:background="@color/colorBackground"
         android:orientation="vertical">
+
+
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
@@ -34,3 +51,4 @@
                 android:textAlignment="center"/>
     </FrameLayout>
 </androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+</LinearLayout>

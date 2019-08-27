@@ -10,4 +10,5 @@
     <color name="colorError">#FF575D</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorGray">#54FFFFFF</color>
+    <color name="colorTransparent">#00FFFFFF</color>
 </resources>

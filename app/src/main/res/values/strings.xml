@@ -16,4 +16,9 @@
     <string name="cancel">Отмена</string>
     <string name="exit">Выйти</string>
     <string name="mem_date">%s дней назад</string>
+    <string name="memCreateTitle">Заголовок</string>
+    <string name="memCreateText">Текст</string>
+    <string name="camera">С камеры</string>
+    <string name="galery">Из галерии</string>
+    <string name="chose_pic">Выбрать фото</string>
 </resources>

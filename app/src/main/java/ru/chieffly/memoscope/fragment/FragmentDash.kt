@@ -66,6 +66,7 @@ class FragmentDash : Fragment() {
                     val db = AppDatabase.getDatabase(requireContext())
                     val memDB = db.memDao()
                     list.forEach{
+                        println("ID "+it.id)
                         memDB.insert(it)
                     }
 
