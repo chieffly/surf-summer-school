@@ -58,7 +58,6 @@ class FragmentProfile : Fragment() {
 
     }
 
-
     fun extractData() {
         val db = AppDatabase.getDatabase(requireContext())
         val memDB = db.memDao()
