@@ -9,6 +9,8 @@ import ru.chieffly.memoscope.fragment.FragmentAdd
 import ru.chieffly.memoscope.fragment.FragmentDash
 import ru.chieffly.memoscope.fragment.FragmentPerson
 import ru.chieffly.memoscope.R
+import ru.chieffly.memoscope.user.APP_PREFERENCES_ID
+import ru.chieffly.memoscope.user.UserStorage
 
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
@@ -16,8 +18,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-
 
         loadFragment(FragmentDash())
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)

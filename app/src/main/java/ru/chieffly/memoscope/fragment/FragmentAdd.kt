@@ -58,8 +58,9 @@ class FragmentAdd : Fragment() {
             ftrans.replace(R.id.fragment_container, FragmentDash())
             ftrans.commit()}
         btnSave.setOnClickListener {
+
             val mem = MemDto(
-                5643654,
+                -1,
                 txtMemTitle.getText().toString(),
                 txtMemDescription.getText().toString(),
                 false,

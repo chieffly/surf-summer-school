@@ -11,7 +11,6 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_margin="20dp"
-            android:text="TEext"
             android:textColor="@color/colorWhite"
             android:textAppearance="?android:attr/textAppearanceLarge"
             android:textSize="14sp">
@@ -20,19 +19,19 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
-            android:layout_marginTop="30dp">
+            android:layout_marginTop="20dp">
         <Button
                 android:id="@+id/btnOne"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="YES"
+                android:layout_marginRight="10dp"
                 style="@style/Widget.AppCompat.Button.Borderless"
         />
         <Button
                 android:id="@+id/btnTwo"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="NO"
+                android:layout_marginRight="10dp"
                 android:background="?android:attr/selectableItemBackground"
         />
     </LinearLayout>

@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
 import ru.chieffly.memoscope.R
+import ru.chieffly.memoscope.user.APP_PREFERENCES_USERNAME
+import ru.chieffly.memoscope.user.UserStorage
 
 private const val DELAY: Long = 300
 
@@ -13,13 +15,18 @@ class SplashActivity : AppCompatActivity() {
 
     var runnable: Runnable = object : Runnable {
         override fun run() {
-            openMainScreen()
+            val storage = UserStorage(applicationContext)
+            val name : String? = storage.getField(APP_PREFERENCES_USERNAME)
+            //println()
+            if (name !="null") {
+                openMainScreen()
+            } else  {openLoginScreen()
+            }
         }
     }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
-
         handler.postDelayed(runnable, DELAY)
     }
 
@@ -31,8 +38,9 @@ class SplashActivity : AppCompatActivity() {
         super.onDestroy()
     }
 
-    fun openLoginScreen() {
 
+
+    fun openLoginScreen() {
         val intent = Intent(applicationContext, LoginActivity::class.java)
         startActivity(intent)
         finish()

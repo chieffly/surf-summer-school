@@ -49,15 +49,13 @@ class LoginActivity : AppCompatActivity() {
 
     fun initListeners () {
         login_edit_text_phone.addTextChangedListener(object : TextWatcher {
-            override fun afterTextChanged(s: Editable?) {
-            }
+            override fun afterTextChanged(s: Editable?) {}
 
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 login_text_layout_phone.error = ""
             }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
         })
 
         login_edit_text_pass.addTextChangedListener(object : TextWatcher {
@@ -66,8 +64,7 @@ class LoginActivity : AppCompatActivity() {
                 login_text_layout_pass.helperText = ""
             }
 
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-            }
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
 
             override fun afterTextChanged(p0: Editable?) {
                 if (login_edit_text_pass.length() < PASS_LENGTH) {
