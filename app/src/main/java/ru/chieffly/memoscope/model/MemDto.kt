@@ -12,5 +12,6 @@ data class MemDto (
     @SerializedName("description") val description : String,
     @SerializedName("isFavorite") var isFavorite : Boolean,
     @SerializedName("createdDate") val createdDate : Long,
-    @SerializedName("photoUtl") val photoUtl : String
+    @SerializedName("photoUtl") val photoUtl : String,
+    val creatorId : Long
 ) : Serializable

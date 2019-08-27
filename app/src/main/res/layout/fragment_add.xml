@@ -6,7 +6,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
-        android:orientation="vertical">
+        android:orientation="vertical"
+>
 
     <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -17,82 +18,88 @@
             android:background="@color/colorSecondary"
             android:minHeight="?attr/actionBarSize">
 
-    <FrameLayout
-            android:id="@+id/linearlayout"
+        <FrameLayout
+                android:id="@+id/linearlayout"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+            <ImageButton
+                    android:id="@+id/btnClose"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    app:srcCompat="@drawable/ic_close"
+                    android:background="@color/colorSecondary"
+                    android:tint="@color/bottom_nav_tint"
+                    android:layout_marginRight="5dp"/>
+
+            <Button
+                    android:id="@+id/btnSaveMem"
+                    android:text="Сохранить"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center|right"
+                    android:layout_marginRight="16dp"
+                    style="@style/Widget.AppCompat.Button.Borderless"
+                    android:shadowColor="@color/colorTransparent"/>
+
+
+        </FrameLayout>
+    </androidx.appcompat.widget.Toolbar>
+    <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent">
-        <ImageButton
-                android:id="@+id/btnClose"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_close"
-                android:background="@color/colorSecondary"
-                android:tint="@color/bottom_nav_tint"
-                android:layout_marginRight="5dp"/>
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:orientation="vertical">
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:ems="10"
+                    android:id="@+id/txtMemTitle"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorGray"
+                    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                    android:hint="@string/memCreateTitle"
+                    android:textSize="24sp"
+                    android:maxLength="140"
 
-        <Button
-                android:id="@+id/btnSaveMem"
-                android:text="Сохранить"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:layout_gravity="center|right"
-                android:layout_marginRight="16dp"
-                style="@style/Widget.AppCompat.Button.Borderless"
-                android:shadowColor="@color/colorTransparent"/>
-
-
-    </FrameLayout>
-</androidx.appcompat.widget.Toolbar>
-
-<EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:ems="10"
-            android:id="@+id/txtMemTitle"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorGray"
-            style="@style/Base.Widget.MaterialComponents.TextInputEditText"
-            android:hint="@string/memCreateTitle"
-            android:textSize="24sp"
-            android:maxLength="140"
-
-    />
-    <EditText
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textMultiLine"
-            android:gravity="start|top"
-            android:ems="10"
-            android:id="@+id/txtMemDescription"
-            style="@style/Base.Widget.MaterialComponents.TextInputEditText"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorGray"
-            android:hint="@string/memCreateText"
-            android:maxLength="1000"
-            android:textSize="14sp"/>
-    <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
-        <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="517dp"
-                tools:srcCompat="@drawable/i"
-                android:id="@+id/imgMem"/>
-        <ImageButton
-                android:id="@+id/buttonDeletePicture"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_close_round"
-                android:background="@color/colorTransparent"
-                android:layout_gravity="right"/>
-        <ImageButton
-                android:id="@+id/btnAddPicture"
-                android:layout_width="40dp"
-                android:layout_height="40dp"
-                app:srcCompat="@drawable/ic_photo"
-                android:layout_gravity="bottom|right"
-                android:layout_margin="10dp"/>
-    </FrameLayout>
-
+            />
+            <EditText
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:inputType="textMultiLine"
+                    android:gravity="start|top"
+                    android:ems="10"
+                    android:id="@+id/txtMemDescription"
+                    style="@style/Base.Widget.MaterialComponents.TextInputEditText"
+                    android:textColor="@color/colorWhite"
+                    android:textColorHint="@color/colorGray"
+                    android:hint="@string/memCreateText"
+                    android:maxLength="1000"
+                    android:textSize="14sp"/>
+            <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+                <ImageView
+                        android:layout_width="match_parent"
+                        android:layout_height="517dp"
+                        tools:srcCompat="@drawable/i"
+                        android:id="@+id/imgMem"/>
+                <ImageButton
+                        android:id="@+id/buttonDeletePicture"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:srcCompat="@drawable/ic_close_round"
+                        android:background="@color/colorTransparent"
+                        android:layout_gravity="right"/>
+                <ImageButton
+                        android:id="@+id/btnAddPicture"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        app:srcCompat="@drawable/ic_photo"
+                        android:layout_gravity="bottom|right"
+                        android:layout_margin="10dp"/>
+            </FrameLayout>
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

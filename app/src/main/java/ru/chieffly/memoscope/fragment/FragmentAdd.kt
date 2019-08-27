@@ -60,12 +60,13 @@ class FragmentAdd : Fragment() {
         btnSave.setOnClickListener {
 
             val mem = MemDto(
-                -1,
+                0,
                 txtMemTitle.getText().toString(),
                 txtMemDescription.getText().toString(),
                 false,
                 Date().time / 1000,
-                "https://miro.medium.com/max/556/1*A9ekuHD-z2SVao5rT8ZEUQ.jpeg"
+                "https://miro.medium.com/max/556/1*A9ekuHD-z2SVao5rT8ZEUQ.jpeg",
+                3232112
             )
             val db = AppDatabase.getDatabase(requireContext())
             val memDB = db.memDao()

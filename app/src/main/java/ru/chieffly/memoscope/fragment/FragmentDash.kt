@@ -48,6 +48,7 @@ class FragmentDash : Fragment() {
 
     }
 
+
     fun makeMemRequest() {
         val storage = UserStorage(requireContext())
         val token = storage.getToken()
@@ -66,11 +67,13 @@ class FragmentDash : Fragment() {
                     val db = AppDatabase.getDatabase(requireContext())
                     val memDB = db.memDao()
                     list.forEach{
-                        println("ID "+it.id)
                         memDB.insert(it)
                     }
 
                     val listFromDB = memDB.all
+                    listFromDB.forEach{
+                        println("ID DB  "+it.id)
+                    }
                     updateRecycleView(listFromDB)
                     progressBar.isVisible = false
 

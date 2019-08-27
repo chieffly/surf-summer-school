@@ -13,6 +13,9 @@ interface MemDao {
     @Query("SELECT * FROM memdto WHERE id = :id")
     fun getById(id: Long): MemDto
 
+    @Query("SELECT * FROM memdto WHERE creatorId = :creator")
+    fun getByCreatorId(creator: Long): List<MemDto>
+
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     fun insert(employee: MemDto)
 

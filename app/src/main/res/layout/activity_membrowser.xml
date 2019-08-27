@@ -28,9 +28,10 @@
                 app:srcCompat="@drawable/ic_close"
                 android:background="@color/colorSecondary"
                 android:layout_gravity="center"
-
                 android:tint="@color/bottom_nav_tint"
-                android:layout_marginRight="37dp"/>
+                android:layout_marginRight="37dp"
+        />
+
         <com.mikhaellopez.circularimageview.CircularImageView
                 android:layout_width="50dp"
                 android:layout_height="50dp"
