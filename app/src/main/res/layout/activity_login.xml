@@ -7,10 +7,10 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/log_layout"
-        tools:context=".activity.LoginActivity">
+        tools:context=".view.activity.LoginActivity">
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_text_layout_phone"
+            android:id="@+id/inputLayoutPhone"
             android:hint="@string/phone"
             android:layout_marginTop="60dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -20,29 +20,29 @@
             app:helperTextTextColor="@color/colorGray">
 
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_edit_text_phone"
+                android:id="@+id/txtPhone"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="number|text"
                 android:maxLines="1"
                 android:textColor="#FFFFFF"
-                android:maxLength="14"/>
+                android:maxLength="16"/>
     </com.google.android.material.textfield.TextInputLayout>
 
 
     <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/login_text_layout_pass"
+            android:id="@+id/inputLayoutPass"
             android:hint="@string/password"
             app:passwordToggleEnabled="true"
             app:passwordToggleTint="@color/colorAction"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             style="@style/text_field_blue"
-            app:layout_constraintTop_toBottomOf="@+id/login_text_layout_phone"
+            app:layout_constraintTop_toBottomOf="@+id/inputLayoutPhone"
             android:layout_marginTop="16dp">
 
         <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/login_edit_text_pass"
+                android:id="@+id/txtPass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:inputType="numberPassword"
@@ -66,7 +66,7 @@
     >
 
         <com.google.android.material.button.MaterialButton
-                android:id="@+id/login_button"
+                android:id="@+id/btnLogin"
                 android:text="@string/log_in"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -78,7 +78,7 @@
                 android:indeterminateTint="@color/colorSecondary"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
-                android:id="@+id/login_progressbar"
+                android:id="@+id/progressbarLogin"
                 android:layout_gravity="center"
                 android:translationZ="20dp"
                 android:visibility="invisible"/>

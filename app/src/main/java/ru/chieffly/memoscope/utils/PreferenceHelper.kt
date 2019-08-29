@@ -3,6 +3,7 @@ package ru.chieffly.memoscope.utils
 import android.content.Context
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager
+import ru.chieffly.memoscope.utils.PreferenceHelper.edit
 
 object PreferenceHelper {
 
@@ -16,6 +17,11 @@ object PreferenceHelper {
         val editor = this.edit()
         operation(editor)
         editor.apply()
+    }
+     fun SharedPreferences.clear() {
+         val editor = this.edit()
+         editor.clear()
+         editor.apply()
     }
 
     /**

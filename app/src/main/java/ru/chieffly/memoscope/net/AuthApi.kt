@@ -3,6 +3,7 @@ package ru.chieffly.memoscope.net
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
+import retrofit2.http.Header
 import retrofit2.http.POST
 import ru.chieffly.memoscope.model.AuthInfoDto
 import ru.chieffly.memoscope.model.LoginUserRequestDto
@@ -13,5 +14,5 @@ interface AuthApi {
     fun loginRequest (@Body body: LoginUserRequestDto) : Call<AuthInfoDto>
 
     @POST("/auth/logout")
-    fun logoutRequest () : Call<AuthInfoDto>
+    fun logoutRequest (@Header("authorization") token: String) : Call<AuthInfoDto>
 }

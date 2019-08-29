@@ -44,7 +44,17 @@
     </FrameLayout>
 </androidx.appcompat.widget.Toolbar>
 
-<EditText
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/text_field_blue"
+            app:counterMaxLength="140"
+            app:counterEnabled="true"
+            app:helperTextTextColor="@color/colorGray">
+
+        <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
@@ -56,9 +66,21 @@
             android:hint="@string/memCreateTitle"
             android:textSize="24sp"
             android:maxLength="140"
+/>
+</com.google.android.material.textfield.TextInputLayout>
 
-    />
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayoutDescr"
+            android:layout_marginTop="60dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            style="@style/text_field_blue"
+            app:counterMaxLength="1000"
+            app:counterEnabled="true"
+            app:helperTextTextColor="@color/colorGray">
+
+    <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="textMultiLine"
@@ -71,13 +93,14 @@
             android:hint="@string/memCreateText"
             android:maxLength="1000"
             android:textSize="14sp"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
     <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
         <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="517dp"
-                tools:srcCompat="@drawable/i"
+                android:layout_height="wrap_content"
                 android:id="@+id/imgMem"/>
         <ImageButton
                 android:id="@+id/buttonDeletePicture"

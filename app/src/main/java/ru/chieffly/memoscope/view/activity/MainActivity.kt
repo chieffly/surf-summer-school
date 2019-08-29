@@ -1,13 +1,13 @@
-package ru.chieffly.memoscope.activity
+package ru.chieffly.memoscope.view.activity
 
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import ru.chieffly.memoscope.fragment.FragmentAdd
-import ru.chieffly.memoscope.fragment.FragmentDash
-import ru.chieffly.memoscope.fragment.FragmentProfile
+import ru.chieffly.memoscope.view.fragment.FragmentAdd
+import ru.chieffly.memoscope.view.fragment.FragmentDash
+import ru.chieffly.memoscope.view.fragment.FragmentProfile
 import ru.chieffly.memoscope.R
 
 

@@ -7,9 +7,10 @@
               android:background="@color/colorBackground">
 
     <ImageView
+            android:id="@+id/splash_logo"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:scaleType="center"
             app:srcCompat="@drawable/ic_logosurf"
-            android:id="@+id/splash_logo"/>
+/>
 </LinearLayout>

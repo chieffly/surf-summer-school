@@ -25,4 +25,5 @@
     <string name="logoutTitle">Действительно хотите выйти?</string>
     <string name="logoutCancel">Отмена</string>
     <string name="logoutConfirm">Выйти</string>
+    <string name="share_menu">Share mem to...</string>
 </resources>

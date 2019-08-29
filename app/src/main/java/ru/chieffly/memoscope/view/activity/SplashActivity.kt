@@ -1,14 +1,15 @@
-package ru.chieffly.memoscope.activity
+package ru.chieffly.memoscope.view.activity
 
 import android.content.Intent
+import android.graphics.drawable.AnimatedVectorDrawable
 import android.os.Bundle
 import android.os.Handler
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.android.synthetic.main.activity_splash.*
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.user.APP_PREFERENCES_TOKEN
-import ru.chieffly.memoscope.user.UserStorage
+import ru.chieffly.memoscope.utils.UserStorage
 
-private const val DELAY: Long = 300
+private const val DELAY: Long = 2000
 
 class SplashActivity : AppCompatActivity() {
     private var handler: Handler = Handler()
@@ -16,22 +17,28 @@ class SplashActivity : AppCompatActivity() {
     var runnable: Runnable = object : Runnable {
         override fun run() {
             val storage = UserStorage(applicationContext)
-            val token : String? = storage.getField(APP_PREFERENCES_TOKEN)
-            if (token !="null") {
+            if (storage.getToken() !="null") {
                 openMainScreen()
             } else  {openLoginScreen()
             }
         }
     }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
+        val drawable = getResources().getDrawable(
+            R.drawable.avd_anim
+        ) as AnimatedVectorDrawable
+        splash_logo.setImageDrawable(drawable)
+        drawable.start()
+
         handler.postDelayed(runnable, DELAY)
     }
 
     public override fun onDestroy() {
 
-        handler?.let {
+        handler.let {
             it.removeCallbacks(runnable)
         }
         super.onDestroy()
