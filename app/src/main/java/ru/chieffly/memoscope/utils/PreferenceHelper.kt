@@ -1,9 +1,8 @@
 package ru.chieffly.memoscope.utils
 
 import android.content.Context
-import android.content.SharedPreferences;
+import android.content.SharedPreferences
 import android.preference.PreferenceManager
-import ru.chieffly.memoscope.utils.PreferenceHelper.edit
 
 object PreferenceHelper {
 

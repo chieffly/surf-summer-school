@@ -96,11 +96,11 @@ class FragmentProfile : Fragment(), OnMemItemClickListener {
         dialog.show(fragmentManager!!.beginTransaction(), "dialog")
     }
 
-    private fun configRecycler() : RecyclerView {
+    private fun configRecycler1() : RecyclerView {
         val recyclerView = view?.findViewById(R.id.profileRecyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         val stagGridLayoutManager = StaggeredGridLayoutManager(
-            2,
+            RECYCLER_SPAN_COUNT,
             StaggeredGridLayoutManager.VERTICAL
         )
         recyclerView.layoutManager = stagGridLayoutManager
@@ -109,7 +109,7 @@ class FragmentProfile : Fragment(), OnMemItemClickListener {
 
     fun showDashboard(mems: List<MemDto>) {
         val rcAdapter = MemRecyclerAdapter(mems, this)
-        configRecycler().adapter = rcAdapter
+        configRecycler1().adapter = rcAdapter
     }
 
 

@@ -1,8 +1,6 @@
 package ru.chieffly.memoscope.presenters
 
 import android.content.Intent
-import android.net.Uri
-import androidx.core.net.toUri
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers

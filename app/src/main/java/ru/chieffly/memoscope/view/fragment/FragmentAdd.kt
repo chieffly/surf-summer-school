@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import ru.chieffly.memoscope.R
 import ru.chieffly.memoscope.presenters.AddPresenter
+import ru.chieffly.memoscope.view.activity.MainActivity
 import ru.chieffly.memoscope.view.dialogs.OpenImageDialogFragment
 
 const val REQUEST_CODE_GALLERY = 1
@@ -26,6 +27,7 @@ const val REQUEST_CODE_DIALOG = 9
 
 class FragmentAdd : Fragment() {
     private val presenter = AddPresenter(this)
+    private lateinit var activity : MainActivity
 
     private lateinit var btnClose: ImageButton
     private lateinit var txtMemTitle: TextView
@@ -43,11 +45,15 @@ class FragmentAdd : Fragment() {
         return view
     }
 
+    fun setParent(activity: MainActivity) {
+        this.activity = activity
+    }
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
         when (requestCode) {
             REQUEST_CODE_GALLERY -> {
                 val selectedImage: Uri? = data?.getData()
                 setImage(selectedImage.toString())
+                buttonDeletePicture.isVisible = true
             }
             REQUEST_CODE_CAMERA -> {
                 val imageBitmap = data?.getData() as Bitmap
@@ -72,9 +78,7 @@ class FragmentAdd : Fragment() {
     }
 
     private fun closeTab() {
-        val ftrans = fragmentManager!!.beginTransaction()
-        ftrans.replace(R.id.fragment_container, FragmentDash())
-        ftrans.commit()
+        activity.showFragmentDash()
     }
 
     private fun initListeners(view: View) {
@@ -102,7 +106,7 @@ class FragmentAdd : Fragment() {
             closeTab()
         }
         buttonDeletePicture.setOnClickListener {
-            imgMem.setImageResource(android.R.color.transparent)
+            imgMem.setImageBitmap(null)
             buttonDeletePicture.isVisible = false
             imgPath=""
         }
@@ -110,7 +114,6 @@ class FragmentAdd : Fragment() {
             val dialog = OpenImageDialogFragment()
             dialog.setTargetFragment(this, REQUEST_CODE_DIALOG)
             dialog.show(fragmentManager!!.beginTransaction(), "dialog")
-            buttonDeletePicture.isVisible = true
         }
     }
 

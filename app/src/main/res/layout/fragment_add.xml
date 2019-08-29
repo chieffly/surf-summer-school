@@ -2,7 +2,6 @@
 <LinearLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/colorBackground"
@@ -46,9 +45,6 @@
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLayoutTitle"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
             style="@style/text_field_blue"
             app:counterMaxLength="140"
             app:counterEnabled="true"
@@ -62,7 +58,6 @@
             android:id="@+id/txtMemTitle"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
-            style="@style/Base.Widget.MaterialComponents.TextInputEditText"
             android:hint="@string/memCreateTitle"
             android:textSize="24sp"
             android:maxLength="140"
@@ -71,10 +66,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/inputLayoutDescr"
-            android:layout_marginTop="60dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="10dp"
             style="@style/text_field_blue"
             app:counterMaxLength="1000"
             app:counterEnabled="true"
@@ -87,7 +79,6 @@
             android:gravity="start|top"
             android:ems="10"
             android:id="@+id/txtMemDescription"
-            style="@style/Base.Widget.MaterialComponents.TextInputEditText"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorGray"
             android:hint="@string/memCreateText"
@@ -107,13 +98,14 @@
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:srcCompat="@drawable/ic_close_round"
-                android:background="@color/colorTransparent"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_gravity="right"/>
         <ImageButton
                 android:id="@+id/btnAddPicture"
                 android:layout_width="40dp"
                 android:layout_height="40dp"
                 app:srcCompat="@drawable/ic_photo"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_gravity="bottom|right"
                 android:layout_margin="10dp"/>
     </FrameLayout>

@@ -22,6 +22,7 @@ import ru.chieffly.memoscope.view.activity.MemBrowserActivity
 import ru.chieffly.memoscope.view.adapters.MemRecyclerAdapter
 import ru.chieffly.memoscope.view.adapters.OnMemItemClickListener
 
+const val RECYCLER_SPAN_COUNT = 2
 
 class FragmentDash : Fragment(), OnMemItemClickListener {
 
@@ -34,7 +35,7 @@ class FragmentDash : Fragment(), OnMemItemClickListener {
         val view = inflater.inflate(R.layout.fragment_dash, container, false)
         initViews(view)
         presenter.initRecycler ()
-        //presenter.makeMemRequest()
+        presenter.makeMemRequest()
 
         return view
     }
@@ -80,10 +81,11 @@ class FragmentDash : Fragment(), OnMemItemClickListener {
     }
 
     fun configRecycler(mems: List<MemDto>) {
+        //TODO view????
         val recyclerView = view?.findViewById(R.id.recyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         val stagGridLayoutManager = StaggeredGridLayoutManager(
-            2,
+            RECYCLER_SPAN_COUNT,
             StaggeredGridLayoutManager.VERTICAL
         )
         recyclerView.layoutManager = stagGridLayoutManager

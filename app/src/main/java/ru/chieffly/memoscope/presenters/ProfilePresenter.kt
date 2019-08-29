@@ -22,7 +22,6 @@ class ProfilePresenter (val view: FragmentProfile) {
 
     fun onInit () {
         val userId = app.getStorage().getUserId()
-        val listFromDB = app.getDB().getByCreatorId(userId)
         showMyMemsFromDB(userId)
     }
 
