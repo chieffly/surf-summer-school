@@ -9,7 +9,7 @@ import kotlinx.android.synthetic.main.activity_splash.*
 import ru.chieffly.memoscope.R
 import ru.chieffly.memoscope.utils.UserStorage
 
-private const val DELAY: Long = 2000
+private const val DELAY: Long = 300
 
 class SplashActivity : AppCompatActivity() {
     private var handler: Handler = Handler()

@@ -1,16 +1,27 @@
 package ru.chieffly.memoscope.view.activity
 
+import android.Manifest
+import android.annotation.SuppressLint
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ru.chieffly.memoscope.R
+import ru.chieffly.memoscope.presenters.MainPresenter
 import ru.chieffly.memoscope.view.fragment.FragmentAdd
 import ru.chieffly.memoscope.view.fragment.FragmentDash
 import ru.chieffly.memoscope.view.fragment.FragmentProfile
-import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.presenters.MainPresenter
 
+
+
+
+private const val CAMERA_REQUEST_CODE = 101
+private const val WRITE_REQUEST_CODE = 102
+private const val READ_REQUEST_CODE = 103
 
 class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemSelectedListener {
     private val presenter = MainPresenter(this)
@@ -22,17 +33,67 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        println("YA RODILSA! MAIN")
+
         setContentView(R.layout.activity_main)
         initFragments()
         initViews()
+        setupPermissions()
+    }
+    private fun setupPermissions() {
+        val camerapermission = Manifest.permission.CAMERA
+        val writepermission = Manifest.permission.WRITE_EXTERNAL_STORAGE
+        val readpermission = Manifest.permission.READ_EXTERNAL_STORAGE
+
+        if (ContextCompat.checkSelfPermission(this,camerapermission) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(camerapermission), CAMERA_REQUEST_CODE)
+        }
+        if (ContextCompat.checkSelfPermission(this,writepermission) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(writepermission), WRITE_REQUEST_CODE)
+        }
+        if (ContextCompat.checkSelfPermission(this,readpermission) != PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this, arrayOf(readpermission), READ_REQUEST_CODE)
+        }
     }
 
-    fun initViews() {
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
+        when (requestCode) {
+            CAMERA_REQUEST_CODE -> {
+
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+
+                    println("Permission has been denied by user " + permissions[0])
+                } else {
+                    println("Permission has been granted by user")
+                }
+            }
+            WRITE_REQUEST_CODE -> {
+
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+
+                    println("WRITE Permission has been denied by user " + permissions[0])
+                } else {
+                    println("WRITE Permission has been granted by user")
+                }
+            }
+            READ_REQUEST_CODE -> {
+
+                if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+
+                    println("WRITE Permission has been denied by user " + permissions[0])
+                } else {
+                    println("WRITE Permission has been granted by user")
+                }
+            }
+        }
+    }
+
+    private fun initViews() {
         val navigation = findViewById<BottomNavigationView>(R.id.navigation)
         navigation.setOnNavigationItemSelectedListener(this)
     }
 
-    fun initFragments() {
+    private fun initFragments() {
         fragmentAdd.setParent(this)
         showFragmentDash()
     }
@@ -42,30 +103,25 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
     }
 
 
-    fun showFragmentDash() {
+    fun showFragment(fragme: Fragment) {
         supportFragmentManager
             .beginTransaction()
-            .replace(R.id.fragment_container, fragmentDash)
+            .replace(R.id.fragment_container, fragme)
             .commit()
-        active = fragmentDash
-        println("showFragmentDash")
+        active = fragme
+    }
+
+    fun showFragmentDash() {
+        showFragment(fragmentDash)
     }
 
     fun showFragmentAdd() {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, fragmentAdd)
-            .commit()
-        active = fragmentAdd
-
+        showFragment(fragmentAdd)
     }
 
     fun showFragmentProfile() {
-        supportFragmentManager
-            .beginTransaction()
-            .replace(R.id.fragment_container, fragmentProfile)
-            .commit()
-        active = fragmentProfile
+        showFragment(fragmentProfile)
+
     }
 
 }

@@ -20,18 +20,18 @@ import ru.chieffly.memoscope.view.adapters.OnMemItemClickListener
 import androidx.core.view.ViewCompat
 import androidx.core.app.ActivityOptionsCompat
 import android.content.Intent
+import ru.chieffly.memoscope.view.activity.MEM_SERIALIZE_ID
 import ru.chieffly.memoscope.view.activity.MemBrowserActivity
+import java.util.ArrayList
 
+const val LOGOUT_REQUEST_CODE = 333
 
 class FragmentProfile : Fragment(), OnMemItemClickListener {
+    lateinit var rcAdapter : MemRecyclerAdapter
 
     override fun onMemItemClick(pos: Int, mem: MemDto, shareImageView: ImageView) {
-        println("НИФИГАСЕБЕ")
-
         val intent = Intent(requireContext(), MemBrowserActivity::class.java)
-        intent.putExtra("MEM", mem)
-//        intent.putExtra(EXTRA_ANIMAL_IMAGE_TRANSITION_NAME, ViewCompat.getTransitionName(shareImageView))
-
+        intent.putExtra(MEM_SERIALIZE_ID, mem)
         val options = ActivityOptionsCompat.makeSceneTransitionAnimation(
             requireActivity(),
             shareImageView,
@@ -47,6 +47,7 @@ class FragmentProfile : Fragment(), OnMemItemClickListener {
     lateinit var DashProgressBar: ProgressBar
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
+        retainInstance = true
         val view = inflater.inflate(R.layout.fragment_person, null)
         setHasOptionsMenu(true)
         initViews(view)
@@ -68,6 +69,7 @@ class FragmentProfile : Fragment(), OnMemItemClickListener {
         txtUserDescription.text = presenter.getUserDescr()
         val toolbar = view.findViewById(R.id.toolbar) as Toolbar
         (activity as AppCompatActivity).setSupportActionBar(toolbar)
+        initRecyclerView(view)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -83,7 +85,7 @@ class FragmentProfile : Fragment(), OnMemItemClickListener {
                 return true
             }
             R.id.main_menu_about -> {
-                //showAbout()
+                //TODO showAbout()
                 return true
             }
             else -> return super.onOptionsItemSelected(item)
@@ -92,24 +94,28 @@ class FragmentProfile : Fragment(), OnMemItemClickListener {
 
     fun logoutDialog() {
         val dialog = LogoutDialogFragment()
-        dialog.setTargetFragment(this, 333)
+        dialog.setTargetFragment(this, LOGOUT_REQUEST_CODE)
         dialog.show(fragmentManager!!.beginTransaction(), "dialog")
     }
 
-    private fun configRecycler1() : RecyclerView {
-        val recyclerView = view?.findViewById(R.id.profileRecyclerView) as RecyclerView
+    private fun initRecyclerView(view : View) {
+        val recyclerView = view.findViewById(R.id.profileRecyclerView) as RecyclerView
         recyclerView.setHasFixedSize(true)
         val stagGridLayoutManager = StaggeredGridLayoutManager(
             RECYCLER_SPAN_COUNT,
             StaggeredGridLayoutManager.VERTICAL
         )
         recyclerView.layoutManager = stagGridLayoutManager
-        return recyclerView
+        val mems = ArrayList<MemDto>()
+        rcAdapter = MemRecyclerAdapter(mems, this)
+        recyclerView.adapter = rcAdapter
     }
 
+
     fun showDashboard(mems: List<MemDto>) {
-        val rcAdapter = MemRecyclerAdapter(mems, this)
-        configRecycler1().adapter = rcAdapter
+        rcAdapter.mems = mems
+        rcAdapter.notifyDataSetChanged()
+
     }
 
 

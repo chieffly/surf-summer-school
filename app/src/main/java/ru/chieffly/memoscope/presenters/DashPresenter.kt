@@ -55,7 +55,7 @@ class DashPresenter(val view: FragmentDash) {
     fun initRecycler ()  {
         app.getDB().getall()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe{listMem -> view.configRecycler(listMem)}
+            .observeOn(AndroidSchedulers.mainThread()).subscribe{listMem -> view.showDashboard(listMem)}
     }
 
 }
