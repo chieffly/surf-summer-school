@@ -33,7 +33,6 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        println("YA RODILSA! MAIN")
 
         setContentView(R.layout.activity_main)
         initFragments()
