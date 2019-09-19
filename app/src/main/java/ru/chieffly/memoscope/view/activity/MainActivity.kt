@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 
-                    println("Permission has been denied by user " + permissions[0])
+                    println("Permission has been denied by user ")
                 } else {
                     println("Permission has been granted by user")
                 }
@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 
-                    println("WRITE Permission has been denied by user " + permissions[0])
+                    println("WRITE Permission has been denied by user ")
                 } else {
                     println("WRITE Permission has been granted by user")
                 }
@@ -79,7 +79,7 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
 
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
 
-                    println("WRITE Permission has been denied by user " + permissions[0])
+                    println("WRITE Permission has been denied by user ")
                 } else {
                     println("WRITE Permission has been granted by user")
                 }
