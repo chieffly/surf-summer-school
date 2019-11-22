@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.view.dialogs
+package ru.chieffly.memoscope.view.main
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -8,8 +8,7 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.view.activity.LoginActivity
-import ru.chieffly.memoscope.presenters.LogoutDialogPresenter
+import ru.chieffly.memoscope.view.login.LoginActivity
 
 
 class LogoutDialogFragment : DialogFragment() {

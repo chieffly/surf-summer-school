@@ -1,7 +1,6 @@
-package ru.chieffly.memoscope.view.activity
+package ru.chieffly.memoscope.view.main
 
 import android.Manifest
-import android.annotation.SuppressLint
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.MenuItem
@@ -11,10 +10,9 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.presenters.MainPresenter
-import ru.chieffly.memoscope.view.fragment.FragmentAdd
-import ru.chieffly.memoscope.view.fragment.FragmentDash
-import ru.chieffly.memoscope.view.fragment.FragmentProfile
+import ru.chieffly.memoscope.view.main.fragments.FragmentAdd
+import ru.chieffly.memoscope.view.main.fragments.FragmentDash
+import ru.chieffly.memoscope.view.main.fragments.FragmentProfile
 
 
 
@@ -45,13 +43,19 @@ class MainActivity : AppCompatActivity(), BottomNavigationView.OnNavigationItemS
         val readpermission = Manifest.permission.READ_EXTERNAL_STORAGE
 
         if (ContextCompat.checkSelfPermission(this,camerapermission) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(camerapermission), CAMERA_REQUEST_CODE)
+            ActivityCompat.requestPermissions(this, arrayOf(camerapermission),
+                CAMERA_REQUEST_CODE
+            )
         }
         if (ContextCompat.checkSelfPermission(this,writepermission) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(writepermission), WRITE_REQUEST_CODE)
+            ActivityCompat.requestPermissions(this, arrayOf(writepermission),
+                WRITE_REQUEST_CODE
+            )
         }
         if (ContextCompat.checkSelfPermission(this,readpermission) != PackageManager.PERMISSION_GRANTED) {
-            ActivityCompat.requestPermissions(this, arrayOf(readpermission), READ_REQUEST_CODE)
+            ActivityCompat.requestPermissions(this, arrayOf(readpermission),
+                READ_REQUEST_CODE
+            )
         }
     }
 

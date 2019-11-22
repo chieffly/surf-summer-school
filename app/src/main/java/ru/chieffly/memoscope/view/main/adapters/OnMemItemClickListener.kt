@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.view.adapters
+package ru.chieffly.memoscope.view.main.adapters
 
 import android.widget.ImageView
 import ru.chieffly.memoscope.model.MemDto

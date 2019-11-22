@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.view.adapters
+package ru.chieffly.memoscope.view.main.adapters
 
 import android.content.Intent
 import android.view.LayoutInflater
@@ -14,12 +14,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.chieffly.memoscope.MyApp
 import ru.chieffly.memoscope.R
+import ru.chieffly.memoscope.db.MemDao
 import ru.chieffly.memoscope.model.MemDto
+import javax.inject.Inject
 
 
 class MemRecyclerAdapter(var mems: List<MemDto>, var om: OnMemItemClickListener) : RecyclerView.Adapter<MemRecyclerAdapter.ViewHolder>() {
 
-    private val app: MyApp = MyApp.applicationContext() as MyApp
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val v = LayoutInflater.from(parent.context).inflate(R.layout.item_mem, parent, false)
@@ -45,7 +46,15 @@ class MemRecyclerAdapter(var mems: List<MemDto>, var om: OnMemItemClickListener)
     }
 
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val app: MyApp = MyApp.applicationContext() as MyApp
+
+        @Inject
+        lateinit var memDb: MemDao
+
+        @Inject
+        lateinit var app: MyApp
+        init {
+            MyApp.appComponent.inject(viewModel = this)
+        }
         lateinit var mem_image : ImageView
         lateinit var textViewName : TextView
 
@@ -68,13 +77,11 @@ class MemRecyclerAdapter(var mems: List<MemDto>, var om: OnMemItemClickListener)
                 if (mem.isFavorite) R.drawable.ic_favorite
                 else R.drawable.ic_favorite_border)
                 Single.fromCallable {
-                    app.getDB().update(mem)
+                    memDb.update(mem)
                 }.subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread()).subscribe()            }
             Glide.with(itemView).load(mem.photoUtl).into(mem_image)
         }
-
-
 
         fun shareMem (mem: MemDto) {
             val shareIntent = Intent(Intent.ACTION_SEND)

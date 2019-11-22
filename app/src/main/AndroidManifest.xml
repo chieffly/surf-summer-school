@@ -15,20 +15,20 @@
             android:name = ".MyApp"
             android:theme="@style/AppTheme">
         <activity
-                android:name="ru.chieffly.memoscope.view.activity.SplashActivity">
+                android:name="ru.chieffly.memoscope.view.splash.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="ru.chieffly.memoscope.view.activity.MainActivity"
+        <activity android:name="ru.chieffly.memoscope.view.main.MainActivity"
                   android:theme="@style/Theme.AppCompat.NoActionBar"
                   />
-        <activity android:name="ru.chieffly.memoscope.view.activity.LoginActivity"
+        <activity android:name="ru.chieffly.memoscope.view.login.LoginActivity"
                   android:windowSoftInputMode="adjustResize|stateHidden"
         />
-        <activity android:name="ru.chieffly.memoscope.view.activity.MemBrowserActivity"/>
+        <activity android:name="ru.chieffly.memoscope.view.membrowser.MemBrowserActivity"/>
 
         <provider
                 android:name="androidx.core.content.FileProvider"

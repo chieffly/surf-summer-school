@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.presenters
+package ru.chieffly.memoscope.view.membrowser
 
 import android.content.Intent
 import io.reactivex.Single
@@ -6,29 +6,36 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ru.chieffly.memoscope.MyApp
 import ru.chieffly.memoscope.R
+import ru.chieffly.memoscope.db.MemDao
 import ru.chieffly.memoscope.model.MemDto
-import ru.chieffly.memoscope.net.NetworkService
 import ru.chieffly.memoscope.utils.APP_PREFERENCES_USERNAME
-import ru.chieffly.memoscope.view.activity.MemBrowserActivity
+import ru.chieffly.memoscope.utils.UserStorage
 import java.util.*
+import javax.inject.Inject
 
 class MemBrowserPresenter(val view: MemBrowserActivity) {
-    private val ns = NetworkService.instance
-    private val app: MyApp = MyApp.applicationContext() as MyApp
 
+    @Inject
+    lateinit var app: MyApp
+    @Inject
+    lateinit var storage: UserStorage
+    @Inject
+    lateinit var memDb: MemDao
 
-
+    init {
+        MyApp.appComponent.inject(viewModel = this)
+    }
 
     fun onUpdateMem (mem : MemDto) {
 
         Single.fromCallable {
-            app.getDB().update(mem)
+            memDb.update(mem)
         }.subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe()
     }
 
     fun getUserName():String {
-        return app.getStorage().getField(APP_PREFERENCES_USERNAME)
+        return storage.getField(APP_PREFERENCES_USERNAME)
     }
 
     fun getCurentData (): Long {

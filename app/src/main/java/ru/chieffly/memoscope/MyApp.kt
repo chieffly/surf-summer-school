@@ -2,19 +2,20 @@ package ru.chieffly.memoscope
 
 import android.app.Application
 import android.content.Context
-import ru.chieffly.memoscope.db.AppDatabase
-import ru.chieffly.memoscope.db.MemDao
-import ru.chieffly.memoscope.utils.UserStorage
+import androidx.appcompat.app.AppCompatDelegate
+import ru.chieffly.memoscope.di.AppComponent
+import ru.chieffly.memoscope.di.AppModule
+import ru.chieffly.memoscope.di.DaggerAppComponent
 
 class MyApp : Application() {
-    private lateinit var memDB : MemDao
-    private lateinit var storage : UserStorage
+
     init {
         instance = this
     }
 
     companion object {
         private var instance: MyApp? = null
+        lateinit var appComponent: AppComponent
 
         fun applicationContext() : Context {
             return instance!!.applicationContext
@@ -22,18 +23,13 @@ class MyApp : Application() {
     }
 
     override fun onCreate() {
+        AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)
+                appComponent = DaggerAppComponent.builder()
+            .appModule(AppModule(this@MyApp))
+            .build()
         super.onCreate()
-        storage = UserStorage(this.applicationContext)
-        memDB = AppDatabase.getDatabase(this.applicationContext).memDao()
 
     }
 
-    fun getDB(): MemDao {
-        return  memDB
-    }
 
-    fun getStorage() : UserStorage
-    {
-        return storage
-    }
 }

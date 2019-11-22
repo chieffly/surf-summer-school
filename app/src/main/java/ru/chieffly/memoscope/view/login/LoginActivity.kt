@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.view.activity
+package ru.chieffly.memoscope.view.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -11,9 +11,7 @@ import androidx.core.view.isVisible
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.activity_login.*
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.presenters.ERR_EMPTY
-import ru.chieffly.memoscope.presenters.ERR_WRONGDATA
-import ru.chieffly.memoscope.presenters.LoginPresenter
+import ru.chieffly.memoscope.view.main.MainActivity
 
 private const val PASS_MIN_LENGTH = 6
 

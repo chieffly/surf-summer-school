@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.presenters
+package ru.chieffly.memoscope.view.login
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -6,17 +6,23 @@ import retrofit2.Response
 import ru.chieffly.memoscope.MyApp
 import ru.chieffly.memoscope.model.AuthInfoDto
 import ru.chieffly.memoscope.model.LoginUserRequestDto
-import ru.chieffly.memoscope.net.NetworkService
-import ru.chieffly.memoscope.view.activity.LoginActivity
+import ru.chieffly.memoscope.net.AuthApi
+import ru.chieffly.memoscope.utils.UserStorage
+import javax.inject.Inject
 
 const val ERR_ERROR = 0
 const val ERR_WRONGDATA = 1
 const val ERR_EMPTY = 2
 
 class LoginPresenter (val view: LoginActivity) {
-    private val app: MyApp = MyApp.applicationContext() as MyApp
-    private val ns = NetworkService.instance
 
+    @Inject
+    lateinit var storage: UserStorage
+    @Inject
+    lateinit var authApi: AuthApi
+    init {
+        MyApp.appComponent.inject(viewModel = this)
+    }
     fun onButtonLoginClicked() {
         view.showButtonProgress ()
 
@@ -24,7 +30,7 @@ class LoginPresenter (val view: LoginActivity) {
             view.getPhoneField(),
             view.getPassField()
         )
-        ns.getAuthApi().loginRequest(acc).enqueue(object : Callback<AuthInfoDto> {
+        authApi.loginRequest(acc).enqueue(object : Callback<AuthInfoDto> {
             override fun onFailure(call: Call<AuthInfoDto>?, t: Throwable?) {
                 view.showErroSnack(ERR_ERROR)
                 view.hideButtonProgress()
@@ -47,7 +53,7 @@ class LoginPresenter (val view: LoginActivity) {
 
     fun saveAuth (response:  Response<AuthInfoDto> ) {
         response.body()?.let {
-            app.getStorage().saveAuthorization(it)
+            storage.saveAuthorization(it)
         }
     }
 

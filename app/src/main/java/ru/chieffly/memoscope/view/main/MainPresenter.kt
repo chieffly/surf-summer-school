@@ -1,7 +1,6 @@
-package ru.chieffly.memoscope.presenters
+package ru.chieffly.memoscope.view.main
 
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.view.activity.MainActivity
 
 class MainPresenter (val view: MainActivity) {
 

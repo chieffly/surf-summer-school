@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.view.activity
+package ru.chieffly.memoscope.view.splash
 
 import android.content.Intent
 import android.graphics.drawable.AnimatedVectorDrawable
@@ -8,6 +8,8 @@ import androidx.appcompat.app.AppCompatActivity
 import kotlinx.android.synthetic.main.activity_splash.*
 import ru.chieffly.memoscope.R
 import ru.chieffly.memoscope.utils.UserStorage
+import ru.chieffly.memoscope.view.login.LoginActivity
+import ru.chieffly.memoscope.view.main.MainActivity
 
 private const val DELAY: Long = 300
 

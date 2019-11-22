@@ -1,4 +1,4 @@
-package ru.chieffly.memoscope.view.dialogs
+package ru.chieffly.memoscope.view.main
 
 import android.app.AlertDialog
 import android.app.Dialog
@@ -9,8 +9,8 @@ import android.widget.Button
 import android.widget.TextView
 import androidx.fragment.app.DialogFragment
 import ru.chieffly.memoscope.R
-import ru.chieffly.memoscope.view.fragment.REQUEST_CODE_CAMERA
-import ru.chieffly.memoscope.view.fragment.REQUEST_CODE_GALLERY
+import ru.chieffly.memoscope.view.main.fragments.REQUEST_CODE_CAMERA
+import ru.chieffly.memoscope.view.main.fragments.REQUEST_CODE_GALLERY
 
 
 class OpenImageDialogFragment : DialogFragment() {
